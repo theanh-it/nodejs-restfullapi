@@ -1,0 +1,30 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^6.7.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "socket.io": "^4.5.3"
+  },
+  "_moduleAliases": {
+    "@src": "src",
+    "@base": "src/app/base",
+    "@db": "src/app/db",
+    "@databases": "src/app/databases"
+  }
+}
