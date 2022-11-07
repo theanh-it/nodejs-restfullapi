@@ -32,7 +32,7 @@ module.exports = class DB{
 
             this.connection = connection.promise();
 
-            console.log("mysql connect db:" + this.database);
+            if(process.env.DEBUG) console.log("mysql connect db:" + this.database);
         }
     }
 
@@ -42,7 +42,7 @@ module.exports = class DB{
             this.connection = false;
             this.disconnect = false;
             
-            console.log("mysql disconnect db:" + this.database);
+            if(process.env.DEBUG) console.log("mysql disconnect db:" + this.database);
         }, 5000);
     }
 
@@ -60,7 +60,7 @@ module.exports = class DB{
 
             this.connectionPool = pool.promise();
 
-            console.log("mysql connect POOL db:" + this.database);
+            if(process.env.DEBUG) console.log("mysql connect POOL db:" + this.database);
         }
     }
 
@@ -70,7 +70,7 @@ module.exports = class DB{
             this.connectionPool = false;
             this.disconnectPool = false;
             
-            console.log("mysql disconnect POOL db:" + this.database);
+            if(process.env.DEBUG) console.log("mysql disconnect POOL db:" + this.database);
         }, 5000);
     }
 }

@@ -15,7 +15,7 @@ class UserController extends Controller{
         })
         .catch(error => {
             this.model.rollback();
-            this.responseError(response, {data: error});
+            this.responseError(response, {data: error, writeLog: true});
         });
     }
 }

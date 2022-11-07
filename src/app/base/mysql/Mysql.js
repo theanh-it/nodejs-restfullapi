@@ -3,7 +3,6 @@ module.exports = class Mysql {
     _transaction = false;
 
     query(sql, data = false) {
-        console.log(this._transaction);
         if(this._transaction){
             this._db.connect();
             return new Promise((resolve, reject) => {

@@ -4,7 +4,11 @@ const jwt       = require("jsonwebtoken");
 const bcrypt    = require("bcrypt");
 
 class AuthController extends Controller{
-    model = model;
+    constructor(){
+        super(model);
+        this.register   = this.register.bind(this);
+        this.login      = this.login.bind(this);
+    }
 
     register(request, response){
         let data = {
@@ -22,7 +26,7 @@ class AuthController extends Controller{
         .insert(data)
         .run()
         .then(() => this.responseSuccess(response, {data: true}))
-        .catch(error => this.responseError(response, {error:error}));
+        .catch(error => this.responseError(response, {data: error, writeLog: true}));
     }
 
     login(request, response){
@@ -36,7 +40,7 @@ class AuthController extends Controller{
             if(!results.length) return this.responseError(response, res);
 
             let checkPassword = bcrypt.compareSync(request.body.password, results[0].password);// return true||false
-
+            
             if(!checkPassword) return this.responseError(response, res);
 
             const payload = {
@@ -53,7 +57,7 @@ class AuthController extends Controller{
             };
 
             return this.responseSuccess(response, res);
-        }).catch(error => this.responseError(response, { data: error}));
+        }).catch(error => this.responseError(response, {data: error, writeLog: true}));
     }
 }
 
